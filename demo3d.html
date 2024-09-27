@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapTiler Vector Tiles Map with 3D Buildings and Water</title>
+    <!-- Maplibre GL JS CSS -->
+    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    
+    <!-- Maplibre GL JS -->
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    
+    <script>
+        // Initialiser kartet med MapTiler vektor tiles
+        var map = new maplibregl.Map({
+            container: 'map', // ID til elementet der kartet skal vises
+            style: 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs', // Grunnleggende MapTiler stil
+            center: [7.995611, 58.146722], // Kristiansand
+            zoom: 15 // Zoomnivå
+        });
+
+        map.on('load', function () {
+            // Legg til 3D-effekt (extrusion) for bygninger
+            map.addLayer({
+                'id': '3d-buildings',
+                'source': 'openmaptiles',
+                'source-layer': 'building',
+                'type': 'fill-extrusion',
+                'paint': {
+                    'fill-extrusion-color': '#ff6666',
+                    'fill-extrusion-height':  ["*", ["get", "render_height"], 1],
+                    'fill-extrusion-opacity': 0.8
+                }
+            });
+
+            // Legg til 3D-effekt (extrusion) for vann
+            map.addLayer({
+                'id': '3d-water',
+                'source': 'openmaptiles',
+                'source-layer': 'water',
+                'type': 'fill-extrusion',
+                'paint': {
+                    'fill-extrusion-color': 'silver',
+                    'fill-extrusion-height': 20, // Fast høyde for vann
+                    'fill-extrusion-base': 0,
+                    'fill-extrusion-opacity': 1
+                }
+            });
+
+
+
+        });
+    </script>
+</body>
+</html>
