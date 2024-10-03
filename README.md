@@ -5,7 +5,18 @@ Opplegg for GirlTechFest i Kristiansand
     * Vector tiles
 * Kartografi
 * Design og UU
-
+* Lag ditt eget kart! 
+    * Bytt stil på kartet
+        * Basis, datascience, aquarell,  school map
+    * (??) Flytt center til skolen din
+    * Endre på zoom-nivået
+    * Fargelegg med dine farger!
+    * Ta inn / ut ulike datalag
+        * Liste med aktuelle datalag
+            * bygninger, vann, m.m.
+        * Fargelegg ulikt
+    * (??) Ta inn andre data fra andre kilder (geojson)
+    * (??) Klikk i kartet
 
 
 # Webutvikling
@@ -28,6 +39,8 @@ JavaScript gir liv til nettsiden. Tenk på det som lysene og bevegelsene i huset
 
 Så, når vi lager en nettside, bruker vi HTML for å lage strukturen, CSS for å pynte den, og JavaScript for å gjøre den interaktiv. Sammen skaper de en spennende og brukervennlig opplevelse på nettet!
 
+# (TODO) Design og universell utforming
+* ...
 
 # Kartutvikling på Web med Vektortiles
 
@@ -59,18 +72,44 @@ Ved å bruke vektortiles kan du lage raske og skalerbare kart på weben. Med enk
 
 
 # (TODO) Lag ditt eget kart!
-* Lag ditt eget kart! 
-    * Bytt stil på kartet
-        * Basis, datascience, aquarell,  school map
-    * (??) Flytt center til skolen din
-    * Endre på zoom-nivået
-    * Fargelegg med dine farger!
-    * Ta inn / ut ulike datalag
-        * Liste med aktuelle datalag
-            * bygninger, vann, m.m.
-        * Fargelegg ulikt
-    * (??) Ta inn andre data fra andre kilder (geojson)
-    * (??) Klikk i kartet
+
+## Oppgave1: Lag ditt eget kart
+* Gå inn på ... 
+* Trykk deg rundt i kartet
+
+## Oppgave2: Bytt stil på kartet
+* Endre på tilejson
+
+## Oppgave3: Endre startposisjon
+* Bytt center og zoom 
+** Her er listen med posisjonen til skoler
+
+## Oppgave4: Fargelegg kartet ditt
+* Sånn fargelegger du bygninger, veger, vann
+* Prøv deg frem med forskjellige farger. Bruk eksemplene i slutten for å få inspirasjon! 
+
+
+# Lag et 3D-kart!
+
+## Oppgave1: Vis kartet i 3D
+* Åpne URL'en... 
+
+## Oppgave2: Endre på tilt og zoom
+* Klarer du bytte center til skolen din?
+
+## Oppgave3: Gjør bygningene høyere
+* Skaleringsfaktor
+
+## Oppgave4: La vannet bli høyere
+* Sette høyde på vann
+
+## Oppgave5: Fargelegg med alpha
+* Bruk fargene fra første del. 
+* Sett alpha og se hva som skjer
+
+## Ta et skjermbilde og skriv ut!
+* Printscreen og print? 
+
 
 # (TODO) Lag ditt eget 3D-kart!
 * Lag et 3D-kart!
