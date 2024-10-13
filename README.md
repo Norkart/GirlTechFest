@@ -27,12 +27,14 @@ center: [7.995611, 58.146722],
 ```
 
 Dette er koordinater i grader [ØST, NORD]. Under er en del koordinater for skoler i Kristiansand
+*OBS! IKKE SJEKKET*
 ```
-center: [EE, NN],  // Fagerholt skole
-center: [EE, NN],  // International School of Kristiansand
-center: [EE, NN],  // Lovisenlund skole
-center: [EE, NN],  // Wilds Minne skole
-center: [EE, NN],  // Todda
+// Koordinater for skoler i Kristiansand (longitude, latitude)
+center: [7.9934021, 58.1500257],  // Fagerholt skole
+center: [8.0011583, 58.1620775],  // International School of Kristiansand
+center: [7.9970427, 58.1536124],  // Lovisenlund skole
+center: [7.9767978, 58.1358032],  // Wilds Minne skole
+center: [7.8316963, 58.1960179],  // Torridal skole
 ```
 
 Bytt ut senterpunktet til din egen skole! Kan du endre zoom-nivå også?
