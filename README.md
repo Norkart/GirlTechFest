@@ -1,3 +1,10 @@
+*TODO*
+* Lage codepen-startpunkt
+* Lage codepen-jukselapp for 2D-kart og 3D-kartet
+* Printing - hvordan? 
+* "laste ned zip-fil" - noe vits?
+* Full gjennomtesting av opplegget
+
 # GirlTechFest
 Opplegg for GirlTechFest i Kristiansand
 
