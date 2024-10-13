@@ -1,4 +1,5 @@
 *TODO*
+* Koordinater for aktuelle skoler
 * Lage codepen-startpunkt
 * Lage codepen-jukselapp for 2D-kart og 3D-kartet
 * Printing - hvordan? 
