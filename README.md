@@ -192,7 +192,6 @@ Ved å bruke vektortiles kan du lage raske og skalerbare kart på weben. Med enk
 Farger må beskrives i koder for at datamaskinen skal forstå det. Under er noen ferdige fargekoder som bruker rgba-koder for å beskrive fargene. RGBA er Red Green Blue Alpha. Alpha er hvor gjennomsiktig fargen skal være. 
 
 Det finnes mange ferdige paletter med farger for kart. Disse er egnet for å vise data i kart på en riktig måte. Vi har brukt http://colorbrewer2.org/ til å hente ut noen vanlige fargepaletter i tillegg til regnbuefargene. 
-
 ## Regnbuefarger
 
 $${\color{rgba(255, 0, 0, 1)}rgba(255, 0, 0, 1)}$$ - Rød
@@ -212,68 +211,67 @@ $${\color{rgba(139, 0, 255, 1)}rgba(139, 0, 255, 1)}$$ - Fiolett
 ### Sekvensiell palett - gul-grønn-blå
 Egnet til: Visning av data som har en naturlig rekkefølge, for eksempel fra lav til høy verdi
 
-$${\color{rgba(255, 255, 204, 1)}rgba(255, 255, 204, 1)}$$ - 
+$${\color{rgba(255, 255, 204, 1)}rgba(255, 255, 204, 1)}$$ - Lys gul
 
-$${\color{rgba(199, 233, 180, 1)}rgba(199, 233, 180, 1)}$$ - 
+$${\color{rgba(199, 233, 180, 1)}rgba(199, 233, 180, 1)}$$ - Lys grønn
 
-$${\color{rgba(127, 205, 187, 1)}rgba(127, 205, 187, 1)}$$ - 
+$${\color{rgba(127, 205, 187, 1)}rgba(127, 205, 187, 1)}$$ - Pastellgrønn
 
-$${\color{rgba(65, 182, 196, 1)}rgba(65, 182, 196, 1)}$$ - 
+$${\color{rgba(65, 182, 196, 1)}rgba(65, 182, 196, 1)}$$ - Sjøgrønn
 
-$${\color{rgba(44, 127, 184, 1)}rgba(44, 127, 184, 1)}$$ - 
+$${\color{rgba(44, 127, 184, 1)}rgba(44, 127, 184, 1)}$$ - Kornblomstblå
 
 ### Sekvensiell palett: Lilla til rød
 Egnet til: Data med en naturlig progresjon, for eksempel intensitet av fenomen, eks. populasjonstetthet, bygningshøyder, vanntemperatur
 
-$${\color{rgba(247, 244, 249, 1)}rgba(247, 244, 249, 1)}$$ - 
+$${\color{rgba(247, 244, 249, 1)}rgba(247, 244, 249, 1)}$$ - Lys lilla
 
-$${\color{rgba(231, 225, 239, 1)}rgba(231, 225, 239, 1)}$$ - 
+$${\color{rgba(231, 225, 239, 1)}rgba(231, 225, 239, 1)}$$ - Pastell lilla
 
-$${\color{rgba(212, 185, 218, 1)}rgba(212, 185, 218, 1)}$$ - 
+$${\color{rgba(212, 185, 218, 1)}rgba(212, 185, 218, 1)}$$ - Lys lavendel
 
-$${\color{rgba(201, 148, 199, 1)}rgba(201, 148, 199, 1)}$$ - 
+$${\color{rgba(201, 148, 199, 1)}rgba(201, 148, 199, 1)}$$ - Lys rosa-lilla
 
-$${\color{rgba(223, 101, 176, 1)}rgba(223, 101, 176, 1)}$$ - 
+$${\color{rgba(223, 101, 176, 1)}rgba(223, 101, 176, 1)}$$ - Mørk rosa
 
 ### Divergerende palett: Rød til blå
 Egnet til: Visualisering av data som går fra én ekstrem til en annen, f.eks. temperaturavvik eller politiske målinger.
 
-$${\color{rgba(103, 0, 31, 1)}rgba(103, 0, 31, 1)}$$ - Rød
+$${\color{rgba(103, 0, 31, 1)}rgba(103, 0, 31, 1)}$$ - Mørk rød
 
-$${\color{rgba(178, 24, 43, 1)}rgba(178, 24, 43, 1)}$$ - 
+$${\color{rgba(178, 24, 43, 1)}rgba(178, 24, 43, 1)}$$ - Rubinrød
 
-$${\color{rgba(214, 96, 77, 1)}rgba(214, 96, 77, 1)}$$ - 
+$${\color{rgba(214, 96, 77, 1)}rgba(214, 96, 77, 1)}$$ - Korall
 
-$${\color{rgba(244, 165, 130, 1)}rgba(244, 165, 130, 1)}$$ - 
+$${\color{rgba(244, 165, 130, 1)}rgba(244, 165, 130, 1)}$$ - Laks
 
-$${\color{rgba(253, 219, 199, 1)}rgba(253, 219, 199, 1)}$$ - 
+$${\color{rgba(253, 219, 199, 1)}rgba(253, 219, 199, 1)}$$ - Lys fersken
 
-$${\color{rgba(209, 229, 240, 1)}rgba(209, 229, 240, 1)}$$ - 
+$${\color{rgba(209, 229, 240, 1)}rgba(209, 229, 240, 1)}$$ - Pastell blå
 
-$${\color{rgba(146, 197, 222, 1)}rgba(146, 197, 222, 1)}$$ - 
+$${\color{rgba(146, 197, 222, 1)}rgba(146, 197, 222, 1)}$$ - Skyblå
 
-$${\color{rgba(67, 147, 195, 1)}rgba(67, 147, 195, 1)}$$ -
+$${\color{rgba(67, 147, 195, 1)}rgba(67, 147, 195, 1)}$$ - Azurblå
 
-$${\color{rgba(33, 102, 172, 1)}rgba(33, 102, 172, 1)}$$ -
+$${\color{rgba(33, 102, 172, 1)}rgba(33, 102, 172, 1)}$$ - Safirblå
 
-$${\color{rgba(5, 48, 97, 1)}rgba(5, 48, 97, 1)}$$ - Blå
+$${\color{rgba(5, 48, 97, 1)}rgba(5, 48, 97, 1)}$$ - Marineblå
 
 ### Kvalitativ palett: Myke pastellfarger
 Egnet til: Visualisering av kategoriske data som har lik vekt, f.eks. ulike grupper eller klasser i et datasett.
 
-$${\color{rgba(179, 226, 205, 1)}rgba(179, 226, 205, 1)}$$ - 
+$${\color{rgba(179, 226, 205, 1)}rgba(179, 226, 205, 1)}$$ - Pastellgrønn
 
-$${\color{rgba(253, 205, 172, 1)}rgba(253, 205, 172, 1)}$$ - 
+$${\color{rgba(253, 205, 172, 1)}rgba(253, 205, 172, 1)}$$ - Pastell oransje
 
-$${\color{rgba(203, 213, 232, 1)}rgba(203, 213, 232, 1)}$$ - 
+$${\color{rgba(203, 213, 232, 1)}rgba(203, 213, 232, 1)}$$ - Pastell blå
 
-$${\color{rgba(244, 202, 228, 1)}rgba(244, 202, 228, 1)}$$ - 
+$${\color{rgba(244, 202, 228, 1)}rgba(244, 202, 228, 1)}$$ - Pastell rosa
 
-$${\color{rgba(230, 245, 201, 1)}rgba(230, 245, 201, 1)}$$ - 
+$${\color{rgba(230, 245, 201, 1)}rgba(230, 245, 201, 1)}$$ - Lys grønn
 
-$${\color{rgba(255, 242, 174, 1)}rgba(255, 242, 174, 1)}$$ - 
+$${\color{rgba(255, 242, 174, 1)}rgba(255, 242, 174, 1)}$$ - Lys gul
 
-$${\color{rgba(241, 226, 204, 1)}rgba(241, 226, 204, 1)}$$ - 
+$${\color{rgba(241, 226, 204, 1)}rgba(241, 226, 204, 1)}$$ - Beige
 
-$${\color{rgba(204, 204, 204, 1)}rgba(204, 204, 204, 1)}$$ - 
-
+$${\color{rgba(204, 204, 204, 1)}rgba(204, 204, 204, 1)}$$ - Lys grå
