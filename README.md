@@ -195,85 +195,85 @@ Det finnes mange ferdige paletter med farger for kart. Disse er egnet for å vis
 
 ## Regnbuefarger
 
-<span style='color:rgba(255, 0, 0, 1)'>rgba(255, 0, 0, 1)</span> - Rød
+$${\color{rgba(255, 0, 0, 1)}rgba(255, 0, 0, 1)}$$ - Rød
 
-<span style='color:rgba(255, 127, 0, 1)'>rgba(255, 127, 0, 1)</span> - Oransje
+$${\color{rgba(255, 127, 0, 1)}rgba(255, 127, 0, 1)}$$ - Oransje
 
-<span style='color:rgba(255, 255, 0, 1)'>rgba(255, 255, 0, 1)</span> - Gul
+$${\color{rgba(255, 255, 0, 1)}rgba(255, 255, 0, 1)}$$ - Gul
 
-<span style='color:rgba(0, 255, 0, 1)'>rgba(0, 255, 0, 1)</span> - Grønn
+$${\color{rgba(0, 255, 0, 1)}rgba(0, 255, 0, 1)}$$ - Grønn
 
-<span style='color:rgba(0, 0, 255, 1)'>rgba(0, 0, 255, 1)</span> - Blå
+$${\color{rgba(0, 0, 255, 1)}rgba(0, 0, 255, 1)}$$ - Blå
 
-<span style='color:rgba(75, 0, 130, 1)'>rgba(75, 0, 130, 1)</span> - Indigo
+$${\color{rgba(75, 0, 130, 1)}rgba(75, 0, 130, 1)}$$ - Indigo
 
-<span style='color:rgba(139, 0, 255, 1)'>rgba(139, 0, 255, 1)</span> - Fiolett
+$${\color{rgba(139, 0, 255, 1)}rgba(139, 0, 255, 1)}$$ - Fiolett
 
 ### Sekvensiell palett - gul-grønn-blå
 Egnet til: Visning av data som har en naturlig rekkefølge, for eksempel fra lav til høy verdi
 
-<span style='color:rgba(255, 255, 204, 1)'>rgba(255, 255, 204, 1)</span>
+$${\color{rgba(255, 255, 204, 1)}rgba(255, 255, 204, 1)}$$ - 
 
-<span style='color:rgba(199, 233, 180, 1)'>rgba(199, 233, 180, 1)</span>
+$${\color{rgba(199, 233, 180, 1)}rgba(199, 233, 180, 1)}$$ - 
 
-<span style='color:rgba(127, 205, 187, 1)'>rgba(127, 205, 187, 1)</span>
+$${\color{rgba(127, 205, 187, 1)}rgba(127, 205, 187, 1)}$$ - 
 
-<span style='color:rgba(65, 182, 196, 1)'>rgba(65, 182, 196, 1)</span>
+$${\color{rgba(65, 182, 196, 1)}rgba(65, 182, 196, 1)}$$ - 
 
-<span style='color:rgba(44, 127, 184, 1)'>rgba(44, 127, 184, 1)</span>
+$${\color{rgba(44, 127, 184, 1)}rgba(44, 127, 184, 1)}$$ - 
 
 ### Sekvensiell palett: Lilla til rød
 Egnet til: Data med en naturlig progresjon, for eksempel intensitet av fenomen, eks. populasjonstetthet, bygningshøyder, vanntemperatur
 
-<span style='color:rgba(247, 244, 249, 1)'>rgba(247, 244, 249, 1)</span>
+$${\color{rgba(247, 244, 249, 1)}rgba(247, 244, 249, 1)}$$ - 
 
-<span style='color:rgba(231, 225, 239, 1)'>rgba(231, 225, 239, 1)</span>
+$${\color{rgba(231, 225, 239, 1)}rgba(231, 225, 239, 1)}$$ - 
 
-<span style='color:rgba(212, 185, 218, 1)'>rgba(212, 185, 218, 1)</span>
+$${\color{rgba(212, 185, 218, 1)}rgba(212, 185, 218, 1)}$$ - 
 
-<span style='color:rgba(201, 148, 199, 1)'>rgba(201, 148, 199, 1)</span>
+$${\color{rgba(201, 148, 199, 1)}rgba(201, 148, 199, 1)}$$ - 
 
-<span style='color:rgba(223, 101, 176, 1)'>rgba(223, 101, 176, 1)</span>
+$${\color{rgba(223, 101, 176, 1)}rgba(223, 101, 176, 1)}$$ - 
 
 ### Divergerende palett: Rød til blå
 Egnet til: Visualisering av data som går fra én ekstrem til en annen, f.eks. temperaturavvik eller politiske målinger.
 
-<span style='color:rgba(103, 0, 31, 1)'>rgba(103, 0, 31, 1)</span>
+$${\color{rgba(103, 0, 31, 1)}rgba(103, 0, 31, 1)}$$ - Rød
 
-<span style='color:rgba(178, 24, 43, 1)'>rgba(178, 24, 43, 1)</span>
+$${\color{rgba(178, 24, 43, 1)}rgba(178, 24, 43, 1)}$$ - 
 
-<span style='color:rgba(214, 96, 77, 1)'>rgba(214, 96, 77, 1)</span>
+$${\color{rgba(214, 96, 77, 1)}rgba(214, 96, 77, 1)}$$ - 
 
-<span style='color:rgba(244, 165, 130, 1)'>rgba(244, 165, 130, 1)</span>
+$${\color{rgba(244, 165, 130, 1)}rgba(244, 165, 130, 1)}$$ - 
 
-<span style='color:rgba(253, 219, 199, 1)'>rgba(253, 219, 199, 1)</span>
+$${\color{rgba(253, 219, 199, 1)}rgba(253, 219, 199, 1)}$$ - 
 
-<span style='color:rgba(209, 229, 240, 1)'>rgba(209, 229, 240, 1)</span>
+$${\color{rgba(209, 229, 240, 1)}rgba(209, 229, 240, 1)}$$ - 
 
-<span style='color:rgba(146, 197, 222, 1)'>rgba(146, 197, 222, 1)</span>
+$${\color{rgba(146, 197, 222, 1)}rgba(146, 197, 222, 1)}$$ - 
 
-<span style='color:rgba(67, 147, 195, 1)'>rgba(67, 147, 195, 1)</span>
+$${\color{rgba(67, 147, 195, 1)}rgba(67, 147, 195, 1)}$$ -
 
-<span style='color:rgba(33, 102, 172, 1)'>rgba(33, 102, 172, 1)</span>
+$${\color{rgba(33, 102, 172, 1)}rgba(33, 102, 172, 1)}$$ -
 
-<span style='color:rgba(5, 48, 97, 1)'>rgba(5, 48, 97, 1)</span>
+$${\color{rgba(5, 48, 97, 1)}rgba(5, 48, 97, 1)}$$ - Blå
 
 ### Kvalitativ palett: Myke pastellfarger
 Egnet til: Visualisering av kategoriske data som har lik vekt, f.eks. ulike grupper eller klasser i et datasett.
 
-<span style='color:rgba(179, 226, 205, 1)'>rgba(179, 226, 205, 1)</span>
+$${\color{rgba(179, 226, 205, 1)}rgba(179, 226, 205, 1)}$$ - 
 
-<span style='color:rgba(253, 205, 172, 1)'>rgba(253, 205, 172, 1)</span>
+$${\color{rgba(253, 205, 172, 1)}rgba(253, 205, 172, 1)}$$ - 
 
-<span style='color:rgba(203, 213, 232, 1)'>rgba(203, 213, 232, 1)</span>
+$${\color{rgba(203, 213, 232, 1)}rgba(203, 213, 232, 1)}$$ - 
 
-<span style='color:rgba(244, 202, 228, 1)'>rgba(244, 202, 228, 1)</span>
+$${\color{rgba(244, 202, 228, 1)}rgba(244, 202, 228, 1)}$$ - 
 
-<span style='color:rgba(230, 245, 201, 1)'>rgba(230, 245, 201, 1)</span>
+$${\color{rgba(230, 245, 201, 1)}rgba(230, 245, 201, 1)}$$ - 
 
-<span style='color:rgba(255, 242, 174, 1)'>rgba(255, 242, 174, 1)</span>
+$${\color{rgba(255, 242, 174, 1)}rgba(255, 242, 174, 1)}$$ - 
 
-<span style='color:rgba(241, 226, 204, 1)'>rgba(241, 226, 204, 1)</span>
+$${\color{rgba(241, 226, 204, 1)}rgba(241, 226, 204, 1)}$$ - 
 
-<span style='color:rgba(204, 204, 204, 1)'>rgba(204, 204, 204, 1)</span>
+$${\color{rgba(204, 204, 204, 1)}rgba(204, 204, 204, 1)}$$ - 
 
