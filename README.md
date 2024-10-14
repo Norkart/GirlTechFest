@@ -1,9 +1,7 @@
 *TODO*
 * Koordinater for aktuelle skoler
-* Lage codepen-startpunkt
-* Lage codepen-jukselapp for 2D-kart og 3D-kartet
-* Printing - hvordan? 
-* "laste ned zip-fil" - noe vits?
+* Printing - teste ctrl+p
+  * https://codepen.io/shivamg11000/pen/BJzOXo
 * Full gjennomtesting av opplegget
 
 # GirlTechFest
@@ -15,20 +13,27 @@ Vi skal jobbe i nettleseren. Oppgavene ligger under. Følg oppgavene steg for st
 
 # Lag ditt eget kart!
 
-## Oppgave1: Lag ditt eget kart
+## Oppgave 1: Lag ditt eget kart
 I denne oppgaven skal du sette opp webkartet og sette startpunktet til skolen din.
 
-Vi skal bruke en kode-editor i nettleseren som heter CodePen. Gå inn linken her for å åpne første oppgave [LINK]. Det skal se omtrent slik ut:
+Vi skal bruke en kode-editor i nettleseren som heter CodePen. Gå inn linken til CodePen for å åpne første oppgave: [https://codepen.io/](https://codepen.io/Alexander-Salveson-Nossum/pen/QWepGqz?editors=1000). Det skal se omtrent slik ut:
 ![alt text](image.png)
 
-Startpunktet for kartet er satt i kode-linjen:
+Først skal du skrive inn gruppenavnet ditt
+```html
+<h1 id="header">Gruppenavnet ditt</h1>
 ```
-center: [7.995611, 58.146722], 
+
+Nå skal du endre på startpunktet for kartet. Finn koden for dette og bytt til senterpunktet for din skole, eller det du har lyst til! 
+```javascript
+//senterpunktet for kartet
+let senterpunkt = [7.995611, 58.146722];
 ```
 
 Dette er koordinater i grader [ØST, NORD]. Under er en del koordinater for skoler i Kristiansand
+
 *OBS! IKKE SJEKKET*
-```
+```javascript
 // Koordinater for skoler i Kristiansand (longitude, latitude)
 center: [7.9934021, 58.1500257],  // Fagerholt skole
 center: [8.0011583, 58.1620775],  // International School of Kristiansand
@@ -37,125 +42,101 @@ center: [7.9767978, 58.1358032],  // Wilds Minne skole
 center: [7.8316963, 58.1960179],  // Torridal skole
 ```
 
-Bytt ut senterpunktet til din egen skole! Kan du endre zoom-nivå også?
+Får du til å endre zoom-nivået også? 
 
-## Oppgave2: Bytt stil på kartet
+## Oppgave 2: Bytt stil på kartet
 Nå skal vi endre på designen til kartet. Det kan vi enkelt gjøre ved å bruke design og data som andre har laget for oss. 
 
 Datagrunnlaget og designen (kartografien) hentes i denne linjen
 ```
-style: 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs', 
+//grunnstil for kartet
+grunnstil = 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs';
 ```
 Her er en liste med flere forskjellige ferdig-stiler. Bytt ut og test de forskjellige. Husk at du bare kan ha 1 stil av gangen. 
 
 ```
-style: 'https://api.maptiler.com/maps/dataviz/style.json?key=2Gpu1OQBPRJaorLakLSs',
+grunnstil = 'https://api.maptiler.com/maps/dataviz/style.json?key=2Gpu1OQBPRJaorLakLSs';
 
-style: 'https://api.maptiler.com/maps/aquarelle/style.json?key=2Gpu1OQBPRJaorLakLSs',
+grunnstil = 'https://api.maptiler.com/maps/aquarelle/style.json?key=2Gpu1OQBPRJaorLakLSs';
 
-style: 'https://api.maptiler.com/maps/toner-v2/style.json?key=2Gpu1OQBPRJaorLakLSs',
+grunnstil = 'https://api.maptiler.com/maps/toner-v2/style.json?key=2Gpu1OQBPRJaorLakLSs';
 
-style: 'https://api.maptiler.com/maps/outdoor-v2/style.json?key=2Gpu1OQBPRJaorLakLSs',
+grunnstil = 'https://api.maptiler.com/maps/outdoor-v2/style.json?key=2Gpu1OQBPRJaorLakLSs';
 
 ```
 _For å bruke ferdig-stiler fra MapTiler må du ha en egen nøkkel. Vi har lagd ferdig en gratis-nøkkel som brukes på GirlTechFest. Den vil dessverre ikke fungere etter festen. Men du kan lage din egen gratisnøkkel på https://www.maptiler.com/_
 
-## Oppgave4: Fargelegg kartet ditt
-Kartet du har lagd fargelegges direkte i nettleseren. Det betyr at vi kan endre på designen til de delene av kartet vi bestemmer. 
+## Oppgave 3: Fargelegg kartet ditt
+Kartet du har lagd, fargelegges direkte i nettleseren. Det betyr at vi kan endre på designen til de delene av kartet vi bestemmer. 
 
-Vi kan bestemme fargen til ulike datasett ved å legge til koden under. Her bestemmer vi fargen til ulike datalag, fks "building" blir til "rgba(100,0,0,0.7)". rgba er en måte å fortelle datamaskinen om farge: Red Green Blue og Alpha. Nummeret er et tall mellom 0 og 100 - og forteller _hvor mye_ av hver farge det skal være. Alpha er mellom 0.0 og 1.0 og forteller hvor stor _prosent_ gjennomsiktighet det skal være. Noen farger kan du også skrive på engelsk (_pink, red, green_). Helt nederst i dokumentet er det en liste med mange ulike farger og mer teori om farger i kart.
+Du må først aktivere fargelegging ved å endre koden til å vise 'true'. Den vises som 'false' nå
+```javascript
+//denne må du sette til 'true' for å aktivere fargelegging av kartet
+let fargelegg = true;
+```
 
-1. Kopier koden under og lim den inn på en ny linje etter _linje 42_. 
-2. Prøv ulike farger på de ulike datalagene
+Nå kan du endre fargene i kartet ved å endre fargene under. Du finner flere eksempler på fargekoder du kan bruke nederst i dokumentet og på arket du har fått utdelt. Lag det kuleste, sprøeste eller fineste kartet dere får til! 
+
+Når du er fornøyd kan du trykke på "Skriv ut" for å skrive ut ditt spesial-designede kart! Gratulerer! 
+
+_rgba(100,50,70,0.1) er en fargekode som gir verdien til Red, Green, Blue mellom 0-100 og Alpha mellom 0.0 og 1.0_
 
 ```javascript
-let veifarge = 'green';
-map.on('load', function () {
-    map.setPaintProperty('building', 'fill-color', 'rgba(100,0,0,0.7)'); // Bygninger
-    map.setPaintProperty('water', 'fill-color', 'rgba(1,0,0,0.8)'); // Vann
-    map.setPaintProperty('landcover', 'fill-color', 'red'); // Skog
+// Her setter vi fargene til kartet
+let bakgrunnsfarge = 'green'
+let veifarge = 'red';
+let bygningsfarge = 'rgba(70,0,50,0.7)';
+let vannfarge = 'pink';
+let skogfarge = 'red';
+let gressfarge = 'orange'
+let jernbanefarge = 'black'
+let boligfarge = 'black';
+```
 
-    map.setPaintProperty('road_minor', 'line-color', veifarge); // Veier
-    map.setPaintProperty('road_major', 'line-color', veifarge); // Veier
-    map.setPaintProperty('road_tunnel', 'line-color', veifarge); // Veier
-    map.setPaintProperty('road_motorway', 'line-color', veifarge); // Veier
-    map.setPaintProperty('bridge', 'line-color', veifarge); // Veier
-    
-    map.setPaintProperty('railway', 'line-color', 'pink'); // Veier
+-----
+-----
 
-});
-``` 
 
 # Lag et 3D-kart!
 Til nå har vi bare sett kartet rett ovenfra i 2D. Kartdata er ofte 3D-data. Nå skal vi se kartet i perspektiv og sette 3D-høyder på datalagene.
 
 ## Oppgave1: Vis kartet i 3D
-Først må vi bytte tilbake til den ferdige "basic"-stylen for kartet.
-Endre tilbake til denne linjen helt i starten av koden din
-```
-style: 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs', 
-```
+Gå inn på [CodePen 3D](https://codepen.io/Alexander-Salveson-Nossum/pen/WNVpoYW?editors=1000). 
 
-For å vise perspektiv (3D) så må vi tilte og vri kartet. Det gjør vi rett under der du satt senterpunktet til kartet. Vi legger til "pitch" og "bearing" for å få dette til. Legg til "pitch: 60," og "bearing: -60," i koden din rett under "center"-linjen. Det skal se cirka slik ut:
+(Hvis du vil kan du kopiere senterpunkt og fargene dine fra den forrige oppgaven!)
+
+Nå skal du først aktivere 3D-modusen. Det gjør du ved å endre variabelen 'perspektiv' til 'true'. 
 
 ```javascript
-var map = new maplibregl.Map({
-    container: 'map', // ID til elementet der kartet skal vises
-    style: 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs', // Grunnleggende MapTiler stil
-    center: [7.995611, 58.146722], // Kristiansand
-    pitch: 60, // pitch in degrees
-    bearing: -60, // bearing in degrees
-    zoom: 15 // Zoomnivå
-});
+//denne må du sette til 'true' for å aktivere 3D i kartet
+let perspektiv = true;
 ```
+
 Nå kan du rotere og "vri" på kartet ved å trykke "ctrl" og museklikk i kartet. Du kan også bruke høyre-musetast og bevege deg rundt. 
 
 ![alt text](image-1.png)
 
 
 ## Oppgave2: Legg til 3D-visning av datalag
-Nå skal vi få bygningene til å bli i 3D. Da må vi legge til et ekstra datalag og design (style). Denne koden legger du rett under koden der du bestemte farger. Hvis det krasjer - er det helt naturlig. Da kan du se på [jukselappen_3D_bygninger]
+Nå skal vi få bygningene til å bli i 3D. Da må du sette en _skaleringsfaktor_ til høyden på bygningene. Dette gjør du ved å endre tallet til _bygning_skalering_. Prøv deg frem og se forskjellene! Hvorfor går det ikke med negative tall?
 
 ```javascript
-// Legg til 3D-effekt (extrusion) for bygninger
-map.addLayer({
-    'id': '3d-buildings',
-    'source': 'openmaptiles',
-    'source-layer': 'building',
-    'type': 'fill-extrusion',
-    'paint': {
-        'fill-extrusion-color': 'rgba(100,0,0,1)',
-        'fill-extrusion-height':  ["*", ["get", "render_height"], 1],
-        'fill-extrusion-opacity': 1.0
-    }
-});
+//denne bestemmer skalering av høyden til bygninger i 3D
+let bygning_skalering = 0;
 ```
-Når du har fått inn bygningene i 3D. Prøv å endre på fargen! Klarer du å endre hvor høye bygningene blir skalert? (_tips: render_height. Bytt 1 med 5_)
 
 ## Oppgave3: La vannet bli høyere
-Kartet trenger ikke bare vise det som er realistisk. Vi kan også legge til 3D-effekt på andre datalag. Nå skal vi legge til 3D-effekt på vannet(!). Da kan vi sette en fast høyde på vannet og se hva som skjer. Prøv deg frem med forskjellig opacity, color og height. Hva kan du bruke dette til? 
+Kartet trenger ikke bare vise det som er realistisk. Vi kan også legge til 3D-effekt på andre datalag. Nå skal vi legge til 3D-effekt på vannet(!). Da kan vi sette en fast høyde på vannet og se hva som skjer. Prøv deg frem med forskjellig høyder! Hva kan du bruke dette til? 
 
-Legg til koden direkte under 3D-bygnings-koden din
 ```javascript
-// Legg til 3D-effekt (extrusion) for vann
-map.addLayer({
-    'id': '3d-water',
-    'source': 'openmaptiles',
-    'source-layer': 'water',
-    'type': 'fill-extrusion',
-    'paint': {
-        'fill-extrusion-color': 'silver',
-        'fill-extrusion-height': 20, // Fast høyde for vann
-        'fill-extrusion-base': 0,
-        'fill-extrusion-opacity': 1
-    }
-});
+//denne bestemmer høyden til vannflaten i 3D
+let vannheight = 0;
 ```
 
-## Ta et skjermbilde og skriv ut!
-* Printscreen og print? 
+Når du er fornøyd kan du trykke på "Skriv ut" for å printe kartet ditt! 
 
 
+--------
 
 # Teori og oppslag
 ## Webutvikling
@@ -177,9 +158,6 @@ JavaScript gir liv til nettsiden. Tenk på det som lysene og bevegelsene i huset
 ### Oppsummering
 
 Så, når vi lager en nettside, bruker vi HTML for å lage strukturen, CSS for å pynte den, og JavaScript for å gjøre den interaktiv. Sammen skaper de en spennende og brukervennlig opplevelse på nettet!
-
-# (TODO) Design og universell utforming
-* ...
 
 # Kartutvikling på Web med Vektortiles
 

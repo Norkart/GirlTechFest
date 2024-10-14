@@ -6,6 +6,9 @@
     <title>MapTiler Vector Tiles Map</title>
     <!-- Maplibre GL JS CSS -->
     <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+    <!-- Maplibre GL JS -->
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+
     <style>
         body, html {
             margin: 0;
@@ -17,60 +20,67 @@
             width: 100%;
             height: 100%;
         }
+        #header {
+            text-align: center;
+            font-family: monospace;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
+    <button>Skriv ut</button>
+    <h1 id="header">Gruppenavnet ditt</h1>
     <div id="map"></div>
-    
-    <!-- Maplibre GL JS -->
-    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
-    
+
     <script>
+        //senterpunktet for kartet
+        let senterpunkt = [7.995611, 58.146722];
+
+        //grunnstil for kartet
+        grunnstil = 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs';
+
+        //denne må du sette til 'true' for å aktivere fargelegging av kartet
+        let fargelegg = true;
+
+        // Her setter vi fargene til kartet
+        let bakgrunnsfarge = 'green'
+        let veifarge = 'red';
+        let bygningsfarge = 'rgba(70,0,50,0.7)';
+        let vannfarge = 'pink';
+        let skogfarge = 'red';
+        let gressfarge = 'orange'
+        let jernbanefarge = 'black'
+        let boligfarge = 'black';
+
+
+
+
         // Initialiser kartet med MapTiler vektor tiles
         var map = new maplibregl.Map({
             container: 'map', // ID til elementet der kartet skal vises
-            style: 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs', // Grunnleggende MapTiler stil
-            //style: 'https://demotiles.maplibre.org/style.json', // Grunnleggende MapTiler stil
-            center: [7.995611, 58.146722], // Kristiansand
+            style: grunnstil, 
+            center: senterpunkt, // Kristiansand
             zoom: 14 // Zoomnivå
         });
 
-
-        let veifarge = 'red';
-
-        // Endre stil på bygninger
         map.on('load', function () {
+            if(fargelegg) {
+                map.setPaintProperty('background', 'background-color', bakgrunnsfarge); // bakgrunn
+                map.setPaintProperty('building', 'fill-color', bygningsfarge); // Bygninger
+                map.setPaintProperty('water', 'fill-color', vannfarge); // Vann
+                map.setPaintProperty('landcover_wood', 'fill-color', skogfarge); // Skog
+                map.setPaintProperty('landcover_grass', 'fill-color', gressfarge); // gress
+                map.setPaintProperty('landuse_residential', 'fill-color', boligfarge); // Boligområder
+                map.setPaintProperty('landuse_residential', 'fill-color', boligfarge); // Boligområder
 
-            map.setPaintProperty('building', 'fill-color', 'rgba(100,0,0,0.7)'); // Bygninger
-            map.setPaintProperty('water', 'fill-color', 'rgba(1,0,0,0.8)'); // Vann
-            map.setPaintProperty('landcover', 'fill-color', 'red'); // Skog
-
-            map.setPaintProperty('road_minor', 'line-color', veifarge); // Veier
-            map.setPaintProperty('road_major', 'line-color', veifarge); // Veier
-            map.setPaintProperty('road_tunnel', 'line-color', veifarge); // Veier
-            map.setPaintProperty('road_motorway', 'line-color', veifarge); // Veier
-            map.setPaintProperty('bridge', 'line-color', veifarge); // Veier
-            
-            map.setPaintProperty('railway', 'line-color', 'pink'); // Veier
-
-        });
-
-
-        map.on('click', 'building', (e) => {
-            const description = JSON.stringify(e.features[0].properties);
-
-            new maplibregl.Popup()
-                .setLngLat(e.lngLat)
-                .setHTML(description)
-                .addTo(map);
-        });
-        map.on('click', (e) => {
-            //const description = JSON.stringify(e.features[0].properties);
-
-            new maplibregl.Popup()
-                .setLngLat(e.lngLat)
-                .setHTML('description')
-                .addTo(map);
+                map.setPaintProperty('road_minor', 'line-color', veifarge); // Veier
+                map.setPaintProperty('road_major', 'line-color', veifarge); // Veier
+                map.setPaintProperty('road_tunnel', 'line-color', veifarge); // Veier
+                map.setPaintProperty('road_motorway', 'line-color', veifarge); // Veier
+                map.setPaintProperty('bridge', 'line-color', veifarge); // Veier
+                
+                map.setPaintProperty('railway', 'line-color', jernbanefarge); // Jernbane
+            }
         });
     </script>
 </body>
