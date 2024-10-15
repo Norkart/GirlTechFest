@@ -1,87 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MapTiler Vector Tiles Map</title>
     <!-- Maplibre GL JS CSS -->
-    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
     <!-- Maplibre GL JS -->
     <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
 
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #map {
+        width: 100%;
+        height: 100%;
+      }
+      #header {
+        text-align: center;
+        font-family: monospace;
+        font-weight: bold;
+      }
+
+      .print-btn {
+        background-color: #ff6e9e;
+        border: 2px solid #121b3c;
+        border-radius: 30px;
+        box-shadow: #cb3768 4px 4px 0 0;
+        color: #121b3c;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 35px;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        margin-top: 10px;
+        margin-left: 10px;
+        padding: 0px 20px;
+      }
+
+      .print-btn:hover {
+        background-color: #fff;
+      }
+
+      .print-btn:active {
+        box-shadow: #422800 2px 2px 0 0;
+        transform: translate(2px, 2px);
+      }
+
+      @media print {
+        @page {
+          size: A4; /* DIN A4 standard, Europe */
+          margin: 0 !important;
         }
-        #map {
-            width: 100%;
-            height: 100%;
+        html,
+        body {
+          width: 210mm;
+          height: 297mm;
+          margin: 0 !important;
+          padding: 0 !important;
+          overflow: hidden;
         }
-        #header {
-            text-align: center;
-            font-family: monospace;
-            font-weight: bold;
+        .no-print {
+          display: none !important;
         }
+      }
     </style>
-</head>
-<body>
-    <button>Skriv ut</button>
+  </head>
+  <body id="print-area">
+    <button id="printButton" class="print-btn no-print" role="button">
+      Skriv ut
+    </button>
     <h1 id="header">Gruppenavnet ditt</h1>
     <div id="map"></div>
 
     <script>
-        //senterpunktet for kartet
-        let senterpunkt = [7.995611, 58.146722];
+      //senterpunktet for kartet
+      let senterpunkt = [7.995611, 58.146722];
 
-        //grunnstil for kartet
-        grunnstil = 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs';
+      //grunnstil for kartet
+      grunnstil =
+        "https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs";
 
-        //denne må du sette til 'true' for å aktivere fargelegging av kartet
-        let fargelegg = true;
+      //denne må du sette til 'true' for å aktivere fargelegging av kartet
+      let fargelegg = true;
 
-        // Her setter vi fargene til kartet
-        let bakgrunnsfarge = 'green'
-        let veifarge = 'red';
-        let bygningsfarge = 'rgba(70,0,50,0.7)';
-        let vannfarge = 'pink';
-        let skogfarge = 'red';
-        let gressfarge = 'orange'
-        let jernbanefarge = 'black'
-        let boligfarge = 'black';
+      // Her setter vi fargene til kartet
+      let bakgrunnsfarge = "green";
+      let veifarge = "red";
+      let bygningsfarge = "rgba(70,0,50,0.7)";
+      let vannfarge = "pink";
+      let skogfarge = "red";
+      let gressfarge = "orange";
+      let jernbanefarge = "black";
+      let boligfarge = "black";
 
+      // Initialiser kartet med MapTiler vektor tiles
+      var map = new maplibregl.Map({
+        container: "map", // ID til elementet der kartet skal vises
+        style: grunnstil,
+        center: senterpunkt, // Kristiansand
+        zoom: 14, // Zoomnivå
+        preserveDrawingBuffer: true, //settes til true for å printe ut
+      });
 
+      map.on("load", function () {
+        if (fargelegg) {
+          map.setPaintProperty(
+            "background",
+            "background-color",
+            bakgrunnsfarge
+          ); // bakgrunn
+          map.setPaintProperty("building", "fill-color", bygningsfarge); // Bygninger
+          map.setPaintProperty("water", "fill-color", vannfarge); // Vann
+          map.setPaintProperty("landcover_wood", "fill-color", skogfarge); // Skog
+          map.setPaintProperty("landcover_grass", "fill-color", gressfarge); // gress
+          map.setPaintProperty("landuse_residential", "fill-color", boligfarge); // Boligområder
+          map.setPaintProperty("landuse_residential", "fill-color", boligfarge); // Boligområder
 
+          map.setPaintProperty("road_minor", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_major", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_tunnel", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_motorway", "line-color", veifarge); // Veier
+          map.setPaintProperty("bridge", "line-color", veifarge); // Veier
 
-        // Initialiser kartet med MapTiler vektor tiles
-        var map = new maplibregl.Map({
-            container: 'map', // ID til elementet der kartet skal vises
-            style: grunnstil, 
-            center: senterpunkt, // Kristiansand
-            zoom: 14 // Zoomnivå
-        });
+          map.setPaintProperty("railway", "line-color", jernbanefarge); // Jernbane
+        }
+      });
 
-        map.on('load', function () {
-            if(fargelegg) {
-                map.setPaintProperty('background', 'background-color', bakgrunnsfarge); // bakgrunn
-                map.setPaintProperty('building', 'fill-color', bygningsfarge); // Bygninger
-                map.setPaintProperty('water', 'fill-color', vannfarge); // Vann
-                map.setPaintProperty('landcover_wood', 'fill-color', skogfarge); // Skog
-                map.setPaintProperty('landcover_grass', 'fill-color', gressfarge); // gress
-                map.setPaintProperty('landuse_residential', 'fill-color', boligfarge); // Boligområder
-                map.setPaintProperty('landuse_residential', 'fill-color', boligfarge); // Boligområder
+      const btn = document.getElementById("printButton");
 
-                map.setPaintProperty('road_minor', 'line-color', veifarge); // Veier
-                map.setPaintProperty('road_major', 'line-color', veifarge); // Veier
-                map.setPaintProperty('road_tunnel', 'line-color', veifarge); // Veier
-                map.setPaintProperty('road_motorway', 'line-color', veifarge); // Veier
-                map.setPaintProperty('bridge', 'line-color', veifarge); // Veier
-                
-                map.setPaintProperty('railway', 'line-color', jernbanefarge); // Jernbane
-            }
-        });
+      btn.addEventListener("click", () => {
+        const defTitle = document.title;
+        document.title = "print-area";
+        window.print();
+        document.title = defTitle;
+      });
     </script>
-</body>
+  </body>
 </html>
