@@ -32,14 +32,19 @@ let senterpunkt = [7.995611, 58.146722];
 
 Dette er koordinater i grader [ØST, NORD]. Under er en del koordinater for skoler i Kristiansand
 
-*OBS! IKKE SJEKKET*
 ```javascript
 // Koordinater for skoler i Kristiansand (longitude, latitude)
-center: [7.9934021, 58.1500257],  // Fagerholt skole
-center: [8.0011583, 58.1620775],  // International School of Kristiansand
-center: [7.9970427, 58.1536124],  // Lovisenlund skole
-center: [7.9767978, 58.1358032],  // Wilds Minne skole
-center: [7.8316963, 58.1960179],  // Torridal skole
+let senterpunkt = [8.034680729216566, 58.17959886921729];  // Fagerholt skole
+let senterpunkt = [8.016726338663457, 58.155842612163845];  // International School of Kristiansand
+let senterpunkt = [8.009256541248622, 58.1566247525529];  // Lovisenlund skole
+let senterpunkt =  [8.024355946062418, 58.14965140664508];  // Wilds Minne skole
+let senterpunkt =  [7.925112198424519, 58.20135148214101];  // Torridal skole
+
+// Andre morsomme
+let senterpunkt = [-81.901693, 41.303921];
+let senterpunkt = [-0.55462, 51.848637];
+let senterpunkt = [-63.987, -33.867886];
+let senterpunkt = [15.382, 43.978];
 ```
 
 Får du til å endre zoom-nivået også? 
