@@ -110,7 +110,7 @@
       // Initialiser kartet med MapTiler vektor tiles
       var map = new maplibregl.Map({
         container: "map", // ID til elementet der kartet skal vises
-        style: grunnstil,
+        style: fargelegg ? "https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs" : grunnstil,
         center: senterpunkt, // Kristiansand
         zoom: 14, // Zoomnivå
         preserveDrawingBuffer: true, //settes til true for å printe ut
