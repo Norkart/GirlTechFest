@@ -37,8 +37,8 @@ Dette er koordinater i grader [ØST, NORD]. Under er en del koordinater for skol
 let senterpunkt = [8.034680729216566, 58.17959886921729];  // Fagerholt skole
 let senterpunkt = [8.016726338663457, 58.155842612163845];  // International School of Kristiansand
 let senterpunkt = [8.009256541248622, 58.1566247525529];  // Lovisenlund skole
-let senterpunkt =  [8.024355946062418, 58.14965140664508];  // Wilds Minne skole
-let senterpunkt =  [7.925112198424519, 58.20135148214101];  // Torridal skole
+let senterpunkt = [8.024355946062418, 58.14965140664508];  // Wilds Minne skole
+let senterpunkt = [7.925112198424519, 58.20135148214101];  // Torridal skole
 
 // Andre morsomme
 let senterpunkt = [-81.901693, 41.303921];
@@ -53,20 +53,20 @@ Får du til å endre zoom-nivået også?
 Nå skal vi endre på designen til kartet. Det kan vi enkelt gjøre ved å bruke design og data som andre har laget for oss. 
 
 Datagrunnlaget og designen (kartografien) hentes i denne linjen
-```
+```javascript
 //grunnstil for kartet
-grunnstil = 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs';
+let grunnstil = 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs';
 ```
 Her er en liste med flere forskjellige ferdig-stiler. Bytt ut og test de forskjellige. Husk at du bare kan ha 1 stil av gangen. 
 
-```
-grunnstil = 'https://api.maptiler.com/maps/dataviz/style.json?key=2Gpu1OQBPRJaorLakLSs';
+```javascript
+let grunnstil = 'https://api.maptiler.com/maps/dataviz/style.json?key=2Gpu1OQBPRJaorLakLSs';
 
-grunnstil = 'https://api.maptiler.com/maps/aquarelle/style.json?key=2Gpu1OQBPRJaorLakLSs';
+let grunnstil = 'https://api.maptiler.com/maps/aquarelle/style.json?key=2Gpu1OQBPRJaorLakLSs';
 
-grunnstil = 'https://api.maptiler.com/maps/toner-v2/style.json?key=2Gpu1OQBPRJaorLakLSs';
+let grunnstil = 'https://api.maptiler.com/maps/toner-v2/style.json?key=2Gpu1OQBPRJaorLakLSs';
 
-grunnstil = 'https://api.maptiler.com/maps/outdoor-v2/style.json?key=2Gpu1OQBPRJaorLakLSs';
+let grunnstil = 'https://api.maptiler.com/maps/outdoor-v2/style.json?key=2Gpu1OQBPRJaorLakLSs';
 
 ```
 _For å bruke ferdig-stiler fra MapTiler må du ha en egen nøkkel. Vi har lagd ferdig en gratis-nøkkel som brukes på GirlTechFest. Den vil dessverre ikke fungere etter festen. Men du kan lage din egen gratisnøkkel på https://www.maptiler.com/_
