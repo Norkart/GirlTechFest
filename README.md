@@ -1,9 +1,3 @@
-*TODO*
-* Koordinater for aktuelle skoler
-* Printing - teste ctrl+p
-  * https://codepen.io/shivamg11000/pen/BJzOXo
-* Full gjennomtesting av opplegget
-
 # GirlTechFest
 Opplegg for GirlTechFest i Kristiansand
 
