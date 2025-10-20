@@ -46,6 +46,8 @@ let senterpunkt = [-63.987, -33.867886];
 let senterpunkt = [15.382, 43.978];
 ```
 
+Finn din egen koordinat her: https://www.maptiler.com/tools/coordinates/
+
 Får du til å endre zoom-nivået også? 
 
 ## Oppgave 2: Fargelegg kartet ditt
