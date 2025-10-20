@@ -104,6 +104,7 @@
       let skogfarge = "red";
       let gressfarge = "orange";
       let jernbanefarge = "black";
+      let jernbanetykkelse = 3.0;
       let boligfarge = "black";
 
       //denne må du sette til 'true' for å aktivere 3D i kartet
@@ -156,6 +157,7 @@ hc svt dracones
           map.setPaintProperty("bridge", "line-color", veifarge); // Veier
 
           map.setPaintProperty("railway", "line-color", jernbanefarge); // Jernbane
+          map.setPaintProperty("railway", "line-width", jernbanetykkelse); // Jernbane
         }
 
         if (perspektiv) {

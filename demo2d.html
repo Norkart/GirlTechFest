@@ -95,7 +95,7 @@
         "https://api.maptiler.com/maps/basic/style.json?key=vUw4RGNUyJcVQljOMB0n";
 
       //denne må du sette til 'true' for å aktivere fargelegging av kartet
-      let fargelegg = false;
+      let fargelegg = true;
 
       // Her setter vi fargene til kartet
       let bakgrunnsfarge = "green";
@@ -105,6 +105,7 @@
       let skogfarge = "red";
       let gressfarge = "orange";
       let jernbanefarge = "black";
+      let jernbanetykkelse = 3.0;
       let boligfarge = "black";
 
       // Initialiser kartet med MapTiler vektor tiles
@@ -137,6 +138,7 @@
           map.setPaintProperty("bridge", "line-color", veifarge); // Veier
 
           map.setPaintProperty("railway", "line-color", jernbanefarge); // Jernbane
+          map.setPaintProperty("railway", "line-width", jernbanetykkelse); // Jernbane
         }
       });
 
