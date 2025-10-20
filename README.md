@@ -10,7 +10,12 @@ Vi skal jobbe i nettleseren. Oppgavene ligger under. Følg oppgavene steg for st
 ## Oppgave 1: Lag ditt eget kart
 I denne oppgaven skal du sette opp webkartet og sette startpunktet til skolen din.
 
-Vi skal bruke en kode-editor i nettleseren som heter CodePen. Gå inn linken til CodePen for å åpne første oppgave: [https://codepen.io/](https://codepen.io/Alexander-Salveson-Nossum/pen/QWepGqz?editors=1000). Det skal se omtrent slik ut:
+Vi skal bruke en kode-editor i nettleseren som heter CodePen. 
+
+Gå inn linken til CodePen for å åpne første oppgave: [https://codepen.io/](https://codepen.io/Alexander-Salveson-Nossum/pen/QWepGqz?editors=1000). Det skal se omtrent slik ut:
+
+<br>
+
 ![alt text](image.png)
 
 Først skal du skrive inn gruppenavnet ditt
@@ -43,29 +48,7 @@ let senterpunkt = [15.382, 43.978];
 
 Får du til å endre zoom-nivået også? 
 
-## Oppgave 2: Bytt stil på kartet
-Nå skal vi endre på designen til kartet. Det kan vi enkelt gjøre ved å bruke design og data som andre har laget for oss. 
-
-Datagrunnlaget og designen (kartografien) hentes i denne linjen
-```javascript
-//grunnstil for kartet
-let grunnstil = 'https://api.maptiler.com/maps/basic/style.json?key=2Gpu1OQBPRJaorLakLSs';
-```
-Her er en liste med flere forskjellige ferdig-stiler. Bytt ut og test de forskjellige. Husk at du bare kan ha 1 stil av gangen. 
-
-```javascript
-let grunnstil = 'https://api.maptiler.com/maps/dataviz/style.json?key=2Gpu1OQBPRJaorLakLSs';
-
-let grunnstil = 'https://api.maptiler.com/maps/aquarelle/style.json?key=2Gpu1OQBPRJaorLakLSs';
-
-let grunnstil = 'https://api.maptiler.com/maps/toner-v2/style.json?key=2Gpu1OQBPRJaorLakLSs';
-
-let grunnstil = 'https://api.maptiler.com/maps/outdoor-v2/style.json?key=2Gpu1OQBPRJaorLakLSs';
-
-```
-_For å bruke ferdig-stiler fra MapTiler må du ha en egen nøkkel. Vi har lagd ferdig en gratis-nøkkel som brukes på GirlTechFest. Den vil dessverre ikke fungere etter festen. Men du kan lage din egen gratisnøkkel på https://www.maptiler.com/_
-
-## Oppgave 3: Fargelegg kartet ditt
+## Oppgave 2: Fargelegg kartet ditt
 Kartet du har lagd, fargelegges direkte i nettleseren. Det betyr at vi kan endre på designen til de delene av kartet vi bestemmer. 
 
 Du må først aktivere fargelegging ved å endre koden til å vise 'true'. Den vises som 'false' nå
@@ -78,13 +61,11 @@ Nå kan du endre fargene i kartet ved å endre fargene under. Du finner flere ek
 
 Når du er fornøyd kan du trykke på "Skriv ut" for å skrive ut ditt spesial-designede kart! Gratulerer! 
 
-_rgba(100,50,70,0.1) er en fargekode som gir verdien til Red, Green, Blue mellom 0-100 og Alpha mellom 0.0 og 1.0_
-
 ```javascript
 // Her setter vi fargene til kartet
 let bakgrunnsfarge = 'green'
 let veifarge = 'red';
-let bygningsfarge = 'rgba(70,0,50,0.7)';
+let bygningsfarge = 'salmon';
 let vannfarge = 'pink';
 let skogfarge = 'red';
 let gressfarge = 'orange'
