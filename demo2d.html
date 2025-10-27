@@ -100,7 +100,7 @@
       // Her setter vi fargene til kartet
       let bakgrunnsfarge = "green";
       let veifarge = "red";
-      let bygningsfarge = "rgba(70,0,50,0.7)";
+      let bygningsfarge = "plum";
       let vannfarge = "pink";
       let skogfarge = "red";
       let gressfarge = "orange";
@@ -111,7 +111,9 @@
       // Initialiser kartet med MapTiler vektor tiles
       var map = new maplibregl.Map({
         container: "map", // ID til elementet der kartet skal vises
-        style: fargelegg ? "https://api.maptiler.com/maps/basic/style.json?key=vUw4RGNUyJcVQljOMB0n" : grunnstil,
+        style: fargelegg
+          ? "https://api.maptiler.com/maps/basic/style.json?key=vUw4RGNUyJcVQljOMB0n"
+          : grunnstil,
         center: senterpunkt, // Kristiansand
         zoom: 14, // Zoomnivå
         preserveDrawingBuffer: true, //settes til true for å printe ut
