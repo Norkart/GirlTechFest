@@ -12,7 +12,7 @@ I denne oppgaven skal du sette opp webkartet og sette startpunktet til skolen di
 
 Vi skal bruke en kode-editor i nettleseren som heter CodePen. 
 
-Gå inn linken til CodePen for å åpne første oppgave: [https://codepen.io/](https://codepen.io/Alexander-Salveson-Nossum/pen/QWepGqz?editors=1000). Det skal se omtrent slik ut:
+Gå inn linken til CodePen for å åpne første oppgave: [https://codepen.io/](https://codepen.io/girltechnorkart/pen/GgoBbJB?editors=1000). Det skal se omtrent slik ut:
 
 <br>
 
@@ -83,7 +83,7 @@ let boligfarge = 'black';
 Til nå har vi bare sett kartet rett ovenfra i 2D. Kartdata er ofte 3D-data. Nå skal vi se kartet i perspektiv og sette 3D-høyder på datalagene.
 
 ## Oppgave1: Vis kartet i 3D
-Gå inn på [CodePen 3D](https://codepen.io/Alexander-Salveson-Nossum/pen/WNVpoYW?editors=1000). 
+Gå inn på [CodePen 3D](https://codepen.io/girltechnorkart/pen/EaPpBVZ?editors=1000). 
 
 (Hvis du vil kan du kopiere senterpunkt og fargene dine fra den forrige oppgaven!)
 
