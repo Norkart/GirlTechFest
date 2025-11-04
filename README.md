@@ -59,7 +59,9 @@ Du må først aktivere fargelegging ved å endre koden til å vise 'true'. Den v
 let fargelegg = true;
 ```
 
-Nå kan du endre fargene i kartet ved å endre fargene under. Du finner flere eksempler på fargekoder du kan bruke nederst i dokumentet og på arket du har fått utdelt. Lag det kuleste, sprøeste eller fineste kartet dere får til! 
+Nå kan du endre fargene i kartet ved å endre fargene under. Du finner flere eksempler på [W3School](https://www.w3schools.com/tags/ref_colornames.asp) og avanserte fargekoder du kan bruke nederst i dokumentet og på arket du har fått utdelt. 
+
+Lag det kuleste, sprøeste eller fineste kartet dere får til! 
 
 Når du er fornøyd kan du trykke på "Skriv ut" for å skrive ut ditt spesial-designede kart! Gratulerer! 
 
