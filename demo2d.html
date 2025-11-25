@@ -143,13 +143,18 @@
           map.setPaintProperty("landuse_residential", "fill-color", boligfarge); // Boligområder
 
           map.setPaintProperty("road_minor", "line-color", veifarge); // Veier
-          map.setPaintProperty("road_major", "line-color", veifarge); // Veier
-          map.setPaintProperty("road_tunnel", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_trunk_primary", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_trunk_primary_casing", "line-color", veifarge); // Veier
           map.setPaintProperty("road_motorway", "line-color", veifarge); // Veier
-          map.setPaintProperty("bridge", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_link", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_secondary_tertiary", "line-color", veifarge); // Veier
+          map.setPaintProperty("tunnel_trunk_primary", "line-color", veifarge); // Veier
+          map.setPaintProperty("tunnel_trunk_primary_casing", "line-color", veifarge); // Veier
+          map.setPaintProperty("bridge_trunk_primary", "line-color", veifarge); // Veier
+          map.setPaintProperty("bridge_trunk_primary_casing", "line-color", veifarge); // Veier
 
-          map.setPaintProperty("railway", "line-color", jernbanefarge); // Jernbane
-          map.setPaintProperty("railway", "line-width", jernbanetykkelse); // Jernbane
+          map.setPaintProperty("road_major_rail", "line-color", jernbanefarge); // Jernbane
+          map.setPaintProperty("road_major_rail", "line-width", jernbanetykkelse); // Jernbane
         }
       });
 

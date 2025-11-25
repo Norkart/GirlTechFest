@@ -93,7 +93,7 @@
       let grunnstil = 'https://tiles.openfreemap.org/styles/liberty';
 
       //denne må du sette til 'true' for å aktivere fargelegging av kartet
-      let fargelegg = true;
+      let fargelegg = false;
 
       // Her setter vi fargene til kartet
       let bakgrunnsfarge = "green";
@@ -107,7 +107,7 @@
       let boligfarge = "black";
 
       //denne må du sette til 'true' for å aktivere 3D i kartet
-      let perspektiv = true;
+      let perspektiv = false;
 
       //denne bestemmer skalering av høyden til bygninger i 3D
       let bygning_skalering = 0;
@@ -152,19 +152,31 @@ hc svt dracones
           map.setPaintProperty("landuse_residential", "fill-color", boligfarge); // Boligområder
 
           map.setPaintProperty("road_minor", "line-color", veifarge); // Veier
-          map.setPaintProperty("road_major", "line-color", veifarge); // Veier
-          map.setPaintProperty("road_tunnel", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_trunk_primary", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_trunk_primary_casing", "line-color", veifarge); // Veier
           map.setPaintProperty("road_motorway", "line-color", veifarge); // Veier
-          map.setPaintProperty("bridge", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_link", "line-color", veifarge); // Veier
+          map.setPaintProperty("road_secondary_tertiary", "line-color", veifarge); // Veier
+          map.setPaintProperty("tunnel_trunk_primary", "line-color", veifarge); // Veier
+          map.setPaintProperty("tunnel_trunk_primary_casing", "line-color", veifarge); // Veier
+          map.setPaintProperty("bridge_trunk_primary", "line-color", veifarge); // Veier
+          map.setPaintProperty("bridge_trunk_primary_casing", "line-color", veifarge); // Veier
 
-          map.setPaintProperty("railway", "line-color", jernbanefarge); // Jernbane
-          map.setPaintProperty("railway", "line-width", jernbanetykkelse); // Jernbane
+          map.setPaintProperty("road_major_rail", "line-color", jernbanefarge); // Jernbane
+          map.setPaintProperty("road_major_rail", "line-width", jernbanetykkelse); // Jernbane
         }
 
         if (perspektiv) {
-          // Legg til 3D-effekt (extrusion) for bygninger
+
+          map.setPaintProperty("building-3d", "fill-extrusion-color", bygningsfarge);
+          map.setPaintProperty("building-3d", "fill-extrusion-height", [
+                "*",
+                ["get", "render_height"],
+                bygning_skalering,
+              ]);
+          /* Legg til 3D-effekt (extrusion) for bygninger
           map.addLayer({
-            id: "3d-buildings",
+            id: "building-3d",
             source: "openmaptiles",
             "source-layer": "building",
             type: "fill-extrusion",
@@ -178,6 +190,7 @@ hc svt dracones
               "fill-extrusion-opacity": 0.8,
             },
           });
+          */
 
           // Legg til 3D-effekt (extrusion) for vann
           map.addLayer({
