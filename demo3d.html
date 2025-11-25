@@ -90,11 +90,10 @@
       let senterpunkt = [7.995611, 58.146722];
 
       //grunnstil for kartet
-      let grunnstil =
-        "https://api.maptiler.com/maps/basic/style.json?key=vUw4RGNUyJcVQljOMB0n";
+      let grunnstil = 'https://tiles.openfreemap.org/styles/liberty';
 
       //denne må du sette til 'true' for å aktivere fargelegging av kartet
-      let fargelegg = false;
+      let fargelegg = true;
 
       // Her setter vi fargene til kartet
       let bakgrunnsfarge = "green";
@@ -108,7 +107,7 @@
       let boligfarge = "black";
 
       //denne må du sette til 'true' for å aktivere 3D i kartet
-      let perspektiv = false;
+      let perspektiv = true;
 
       //denne bestemmer skalering av høyden til bygninger i 3D
       let bygning_skalering = 0;
@@ -129,7 +128,7 @@ hc svt dracones
       var map = new maplibregl.Map({
         container: "map", // ID til elementet der kartet skal vises
         style: fargelegg
-          ? "https://api.maptiler.com/maps/basic/style.json?key=vUw4RGNUyJcVQljOMB0n"
+          ? "https://tiles.openfreemap.org/styles/liberty"
           : grunnstil,
         center: senterpunkt, // Kristiansand
         pitch: pitch,

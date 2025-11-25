@@ -92,7 +92,7 @@
 
       //grunnstil for kartet
       let grunnstil =
-        "https://api.maptiler.com/maps/basic/style.json?key=vUw4RGNUyJcVQljOMB0n";
+        "https://tiles.openfreemap.org/styles/liberty";
 
       //denne må du sette til 'true' for å aktivere fargelegging av kartet
       let fargelegg = false;
@@ -112,20 +112,29 @@
       var map = new maplibregl.Map({
         container: "map", // ID til elementet der kartet skal vises
         style: fargelegg
-          ? "https://api.maptiler.com/maps/basic/style.json?key=vUw4RGNUyJcVQljOMB0n"
+          ? "https://tiles.openfreemap.org/styles/liberty"
           : grunnstil,
         center: senterpunkt, // Kristiansand
         zoom: 14, // Zoomnivå
+        //lock to 2d view
+        pitch: 0,
+        bearing: 0,
+        //disable rotation and pitch
+        dragRotate: false,
+        touchZoomRotate: false,
         preserveDrawingBuffer: true, //settes til true for å printe ut
       });
 
       map.on("load", function () {
+        map.removeLayer("building-3d"); //fjerner landegrenser
+        map.setLayerZoomRange("building", 13, 20); // set minZoom=0, maxZoom=20 for the 'building' layer
         if (fargelegg) {
           map.setPaintProperty(
             "background",
             "background-color",
             bakgrunnsfarge
           ); // bakgrunn
+          
           map.setPaintProperty("building", "fill-color", bygningsfarge); // Bygninger
           map.setPaintProperty("water", "fill-color", vannfarge); // Vann
           map.setPaintProperty("landcover_wood", "fill-color", skogfarge); // Skog
@@ -143,6 +152,8 @@
           map.setPaintProperty("railway", "line-width", jernbanetykkelse); // Jernbane
         }
       });
+
+
 
       const btn = document.getElementById("printButton");
 
