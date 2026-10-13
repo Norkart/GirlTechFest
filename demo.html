@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mitt kart</title>
+    <!-- Maplibre GL JS CSS -->
+    <link
+      href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <!-- Maplibre GL JS -->
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+  </head>
+  <body id="print-area">
+    <div class="verktoylinje no-print">
+      <button id="printButton" class="print-btn" role="button">Skriv ut</button>
+      <!-- Velg sted: value er koordinatene [ØST, NORD] -->
+      <div id="steder">
+        <label
+          ><input type="radio" name="sted" value="kristiansand" /> Eget
+          valg</label
+        >
+        <label
+          ><input type="radio" name="sted" value="8.017445, 58.15611" />
+          Internasjonal skole</label
+        >
+        <label
+          ><input type="radio" name="sted" value="7.953798, 58.153905" />
+          Krossen</label
+        >
+        <label
+          ><input type="radio" name="sted" value="7.935928, 58.147414" />
+          Hellemyr skole</label
+        >
+        <label
+          ><input type="radio" name="sted" value="7.969810, 58.147520" />
+          Solholmen skole</label
+        >
+      </div>
+    </div>
+
+    <h1 id="header">Gruppenavnet ditt</h1>
+    <div id="map"></div>
+
+    <script>
+      // ===== DEL 1: 2D-kart =====
+
+      //senterpunktet for kartet
+      let senterpunkt = [7.99418, 58.145641];
+      //biblioteket: [7.994180, 58.145641]
+
+      //denne må du sette til 'true' for å aktivere fargelegging av kartet
+      let fargelegg = false;
+
+      // Her setter vi fargene til kartet
+      let bakgrunnsfarge = "green";
+      let veifarge = "red";
+      let bygningsfarge = "plum";
+      let vannfarge = "orange";
+      let skogfarge = "red";
+      let gressfarge = "orange";
+      let jernbanefarge = "black";
+      let jernbanetykkelse = 3.0;
+      let boligfarge = "black";
+
+      // ====== Ekstraoppdrag: Veistil =========
+      // Her setter vi linjestilen til veiene
+      let nyveistil = false;
+
+      //se eget dokument hva [2,2] betyr
+      let veistil = [2, 2];
+
+      //fargen i hullene mellom strekene
+      //"transparent" = usynlig, da ser du kartet under
+      let veikantBakgrunnsfarge = "transparent";
+
+      // ===== DEL 2: 3D kart – vent med denne til du er ferdig med fargene! =====
+
+      //denne må du sette til 'true' for å aktivere 3D i kartet
+      let perspektiv = false;
+
+      //denne bestemmer skalering av høyden til bygninger i 3D
+      let bygning_skalering = 0;
+
+      //denne bestemmer høyden til skogen i 3D
+      let skoghoyde = 0;
+
+      //denne bestemmer høyden til vannflaten i 3D
+      let vannheight = 0;
+
+      //Bygg ditt eget tårn på valgt sted (høyde i meter, 0 = ikke noe tårn)
+      let taarnhoyde = 0;
+      let taarnfarge = "hotpink";
+
+      // ====== Ekstra: Skattejakt =========
+      // Det er gjemt en skatt i kartet! Klikk i kartet for å lete etter den.
+      let skattejakt = false;
+
+      // hvor nær skatten du må klikke (i meter). Mindre tall = vanskeligere!
+      let skattestorrelse = 50;
+
+      // det popupen sier når du klikker
+      let kaldtTekst = "Brrr, iskaldt! ❄️";
+      let lunkentTekst = "Lunkent... 🙂";
+      let varmtTekst = "Varmt! 🔥";
+      let funnetTekst = "Du fant skatten! 💎";
+
+      // ikonet som blir liggende der du fant skatten
+      let skatteikon = "💎";
+
+      // ================= FERDIG ====================
+      /*
+      Herfra og nedover trenger du ikke å endre på noe
+      */
+
+      // Veilagene i MapTiler basic som får ny farge og ny linjestil
+      // (E18, E39 og Rv 9 er "trunk" og tegnes av road_major)
+      const veilag = [
+        "road_minor", // små veier
+        "road_major", // hovedveier, også E18, E39 og Rv 9
+        "road_motorway", // motorvei
+        "road_tunnel", // tunneler
+        "bridge", // broer
+      ];
+      const stipletteVeier = veilag;
+
+      // Husk valgt sted når CodePen laster kartet på nytt
+      const stedNokkel = "girltechfest-valgt-sted";
+      let valgtSted = "kristiansand";
+      try {
+        valgtSted = localStorage.getItem(stedNokkel) || "kristiansand";
+      } catch (e) {}
+      const radioknapper = document.querySelectorAll('input[name="sted"]');
+      if (![...radioknapper].some((radio) => radio.value === valgtSted)) {
+        valgtSted = "kristiansand"; // stedet finnes ikke lenger i listen
+      }
+      const tilKoordinat = (verdi) =>
+        verdi === "kristiansand" ? senterpunkt : verdi.split(",").map(Number);
+
+      // Lager grunnflaten til tårnet: en firkant rundt et punkt
+      const taarnFirkant = ([x, y]) => {
+        const dy = 0.0001; // ca. 11 meter til hver side nord/sør
+        const dx = dy / Math.cos((y * Math.PI) / 180); // like bredt øst/vest
+        return {
+          type: "Feature",
+          properties: {},
+          geometry: {
+            type: "Polygon",
+            coordinates: [
+              [
+                [x - dx, y - dy],
+                [x + dx, y - dy],
+                [x + dx, y + dy],
+                [x - dx, y + dy],
+                [x - dx, y - dy],
+              ],
+            ],
+          },
+        };
+      };
+
+      // Legger til et datalag i 3D med fast høyde
+      const leggTil3dLag = (id, kilde, kildelag, farge, hoyde, filter) => {
+        const lag = {
+          id: id,
+          source: kilde,
+          type: "fill-extrusion",
+          paint: {
+            "fill-extrusion-color": farge,
+            "fill-extrusion-height": hoyde,
+            "fill-extrusion-opacity": 0.9,
+          },
+        };
+        if (kildelag) lag["source-layer"] = kildelag;
+        if (filter) lag.filter = filter;
+        map.addLayer(lag);
+      };
+
+      // MapTiler basic har ingen kant under veiene. Vi lager en kopi av veien
+      const leggTilVeikant = (vei) => {
+        const kant = {
+          id: vei.id + "_kant",
+          type: "line",
+          source: vei.source,
+          "source-layer": vei["source-layer"],
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: { "line-color": veikantBakgrunnsfarge },
+        };
+        if (vei.filter) kant.filter = vei.filter;
+        if (vei.minzoom !== undefined) kant.minzoom = vei.minzoom;
+        if (vei.paint && vei.paint["line-width"]) {
+          kant.paint["line-width"] = vei.paint["line-width"];
+        }
+        map.addLayer(kant, vei.id); // legges rett under veien
+      };
+
+      // Steder i Kristiansand der skatten kan være gjemt [ØST, NORD]
+      const skattesteder = [
+        { navn: "Posebyen", sted: [7.998235, 58.149132] },
+        { navn: "Fiskebrygga", sted: [7.995059, 58.141165] },
+        { navn: "Kilden", sted: [7.996947, 58.139124] },
+        { navn: "Aquarama", sted: [8.00671, 58.1468] },
+        { navn: "Ravnedalen", sted: [7.973011, 58.15279] },
+        { navn: "Botanisk hage", sted: [8.00361, 58.158974] },
+        { navn: "Odderøya fyr", sted: [8.002569, 58.131647] },
+        { navn: "Biblioteket", sted: [7.993876, 58.145815] },
+      ];
+      let skatt = null;
+      let antallKlikk = 0;
+      let antallFunnet = 0;
+
+      // Gjemmer skatten på et nytt, tilfeldig sted
+      const nySkatt = () => {
+        const andreSteder = skattesteder.filter((s) => s !== skatt);
+        skatt = andreSteder[Math.floor(Math.random() * andreSteder.length)];
+        antallKlikk = 0;
+      };
+      nySkatt();
+
+      const visAvstand = (meter) =>
+        meter < 1000
+          ? `${Math.round(meter)} meter`
+          : `${(meter / 1000).toFixed(1).replace(".", ",")} km`;
+
+      // Ett klikk i skattejakten: fant du skatten, eller er det varmt eller kaldt?
+      const skattejaktKlikk = (e) => {
+        antallKlikk++;
+        const skattested = new maplibregl.LngLat(skatt.sted[0], skatt.sted[1]);
+        const avstand = e.lngLat.wrap().distanceTo(skattested);
+
+        if (avstand <= skattestorrelse) {
+          antallFunnet++;
+          const ikon = document.createElement("div");
+          ikon.textContent = skatteikon;
+          ikon.style.fontSize = "32px";
+          new maplibregl.Marker({ element: ikon })
+            .setLngLat(skattested)
+            .addTo(map);
+          new maplibregl.Popup({ className: "no-print" })
+            .setLngLat(skattested)
+            .setHTML(
+              `<b>${funnetTekst}</b><br />Den lå ved <b>${skatt.navn}</b>.<br />` +
+                `Du brukte ${antallKlikk} klikk. Skatter funnet: ${antallFunnet}<br />` +
+                `<i>Klikk i kartet for å lete etter neste!</i>`,
+            )
+            .addTo(map);
+          nySkatt();
+          return;
+        }
+
+        let tekst = kaldtTekst;
+        if (avstand < 250) {
+          tekst = varmtTekst;
+        } else if (avstand < 600) {
+          tekst = lunkentTekst;
+        }
+        new maplibregl.Popup({ className: "no-print" })
+          .setLngLat(e.lngLat.wrap())
+          .setHTML(
+            `<b>${tekst}</b><br />Skatten er ${visAvstand(avstand)} unna.<br />Klikk nr. ${antallKlikk}`,
+          )
+          .addTo(map);
+      };
+
+      var map = new maplibregl.Map({
+        container: "map", // ID til elementet der kartet skal vises
+        style:
+          "https://api.maptiler.com/maps/basic/style.json?key=vUw4RGNUyJcVQljOMB0n",
+        center: tilKoordinat(valgtSted),
+        zoom: 14,
+        // 2D: rett ovenfra og låst. 3D: vippet og kan roteres
+        pitch: perspektiv ? 60 : 0,
+        bearing: perspektiv ? -60 : 0,
+        dragRotate: perspektiv,
+        touchZoomRotate: perspektiv,
+        preserveDrawingBuffer: true, //settes til true for å printe ut
+      });
+
+      // Klikk i kartet: skattejakt
+      map.on("click", (e) => {
+        if (skattejakt) skattejaktKlikk(e);
+      });
+
+      map.on("load", function () {
+        map.setLayerZoomRange("building", 13, 20);
+
+        if (fargelegg) {
+          map.setPaintProperty(
+            "background",
+            "background-color",
+            bakgrunnsfarge,
+          );
+          map.setPaintProperty("building", "fill-color", bygningsfarge);
+          map.setPaintProperty("water", "fill-color", vannfarge);
+          map.setPaintProperty("landcover_wood", "fill-color", skogfarge);
+          map.setPaintProperty("landcover_grass", "fill-color", gressfarge);
+          map.setPaintProperty("landuse_residential", "fill-color", boligfarge);
+          veilag.forEach((id) =>
+            map.setPaintProperty(id, "line-color", veifarge),
+          );
+          map.setPaintProperty("railway", "line-color", jernbanefarge);
+          map.setPaintProperty("railway", "line-width", jernbanetykkelse);
+        }
+
+        if (nyveistil) {
+          const alleLag = map.getStyle().layers;
+          stipletteVeier.forEach((id) => {
+            const vei = alleLag.find((lag) => lag.id === id);
+            if (!vei) return; // laget finnes ikke i denne kartstilen
+            if (veikantBakgrunnsfarge !== "transparent") {
+              leggTilVeikant(vei);
+            }
+            // runde ender på alle veier, ellers blir prikkene [0, 2] usynlige
+            map.setLayoutProperty(id, "line-cap", "round");
+            map.setPaintProperty(id, "line-dasharray", veistil);
+          });
+        }
+
+        if (perspektiv) {
+          // 3D-bygninger (MapTiler basic har ikke dette laget, så vi lager det selv)
+          const forsteTekstlag = map
+            .getStyle()
+            .layers.find((lag) => lag.type === "symbol");
+          map.addLayer(
+            {
+              id: "building-3d",
+              source: "openmaptiles",
+              "source-layer": "building",
+              type: "fill-extrusion",
+              minzoom: 14,
+              paint: {
+                "fill-extrusion-color": bygningsfarge,
+                "fill-extrusion-height": [
+                  "*",
+                  ["get", "render_height"],
+                  bygning_skalering,
+                ],
+                "fill-extrusion-base": [
+                  "*",
+                  ["get", "render_min_height"],
+                  bygning_skalering,
+                ],
+                "fill-extrusion-opacity": 0.8,
+              },
+            },
+            forsteTekstlag ? forsteTekstlag.id : undefined, // under tekstene i kartet
+          );
+
+          // 3D-vann og 3D-skog
+          if (vannheight > 0) {
+            leggTil3dLag(
+              "3d-water",
+              "openmaptiles",
+              "water",
+              vannfarge,
+              vannheight,
+            );
+          }
+          if (skoghoyde > 0) {
+            leggTil3dLag(
+              "3d-skog",
+              "openmaptiles",
+              "landcover",
+              skogfarge,
+              skoghoyde,
+              ["==", ["get", "class"], "wood"],
+            );
+          }
+
+          // Ditt eget tårn på valgt sted
+          if (taarnhoyde > 0) {
+            map.addSource("taarn", {
+              type: "geojson",
+              data: taarnFirkant(tilKoordinat(valgtSted)),
+            });
+            leggTil3dLag("3d-taarn", "taarn", null, taarnfarge, taarnhoyde);
+          }
+        }
+      });
+
+      // Velg sted: flytt kartet og tårnet, og husk valget
+      radioknapper.forEach((radio) => {
+        radio.checked = radio.value === valgtSted;
+        radio.addEventListener("change", () => {
+          try {
+            localStorage.setItem(stedNokkel, radio.value);
+          } catch (e) {}
+          const sted = tilKoordinat(radio.value);
+          map.flyTo({ center: sted });
+          const taarn = map.getSource("taarn");
+          if (taarn) {
+            taarn.setData(taarnFirkant(sted));
+          }
+        });
+      });
+
+      // Skriv ut-knappen
+      const btn = document.getElementById("printButton");
+      btn.addEventListener("click", () => {
+        document.body.classList.add("utskrift"); // CSS gir #map A4-størrelse
+        map.resize(); // kartet tegnes på nytt rundt samme senterpunkt
+        map.once("idle", () => {
+          // vent til alle kartbiter er lastet
+          window.print();
+          document.body.classList.remove("utskrift");
+          map.resize();
+        });
+      });
+    </script>
+  </body>
+</html>

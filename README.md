@@ -5,14 +5,16 @@ Nå skal du lære hvordan kart på web fungerer. Du skal lage ditt eget kart med
 
 Vi skal jobbe i nettleseren. Oppgavene ligger under. Følg oppgavene steg for steg. Husk å lese oppgavene nøye. Programmering må være helt nøyaktig og riktig for at datamaskinen skal skjønne det. Spør en av veilederne hvis du står fast. 
 
+Oppgavene finnes også som hefte: [GirlTechFest2026.pdf](GirlTechFest2026.pdf)
+
 # Lag ditt eget kart!
 
 ## Oppgave 1: Lag ditt eget kart
 I denne oppgaven skal du sette opp webkartet og sette startpunktet til skolen din.
 
-Vi skal bruke en kode-editor i nettleseren som heter CodePen. 
+Vi skal bruke en kode-editor i nettleseren som heter CodePen. Alle oppgavene gjør du i den samme CodePen-en.
 
-Gå inn linken til CodePen for å åpne første oppgave: [https://codepen.io/](https://codepen.io/girltechnorkart/pen/GgoBbJB?editors=1000). Det skal se omtrent slik ut:
+Gå inn linken til CodePen for å åpne oppgavene: [https://codepen.io/girltechnorkart/pen/PwpEmaK](https://codepen.io/girltechnorkart/pen/PwpEmaK). Det skal se omtrent slik ut:
 
 <br>
 
@@ -23,10 +25,12 @@ Først skal du skrive inn gruppenavnet ditt
 <h1 id="header">Gruppenavnet ditt</h1>
 ```
 
-Nå skal du endre på startpunktet for kartet. Finn koden for dette og bytt til senterpunktet for din skole, eller det du har lyst til! 
+Øverst i kartet kan du velge en skole. Klikk på den, så flyr kartet dit.
+
+Nå skal du endre på startpunktet for kartet. Finn koden for dette og bytt til senterpunktet for din skole, eller det du har lyst til! Velg "Eget valg" øverst i kartet for å se stedet ditt.
 ```javascript
 //senterpunktet for kartet
-let senterpunkt = [7.995611, 58.146722];
+let senterpunkt = [7.99418, 58.145641];
 ```
 
 Dette er koordinater i grader [ØST, NORD]. Under er en del koordinater for skoler i Kristiansand
@@ -59,22 +63,21 @@ Du må først aktivere fargelegging ved å endre koden til å vise 'true'. Den v
 let fargelegg = true;
 ```
 
-Nå kan du endre fargene i kartet ved å endre fargene under. Du finner flere eksempler på [W3School](https://www.w3schools.com/tags/ref_colornames.asp) og avanserte fargekoder du kan bruke nederst i dokumentet og på arket du har fått utdelt. 
+Nå kan du endre fargene i kartet ved å endre fargene under. Fargene skrives på engelsk, med hermetegn rundt. Du finner flere eksempler på [W3School](https://www.w3schools.com/tags/ref_colornames.asp), i fargekartet bakerst i heftet og avanserte fargekoder nederst i dokumentet. 
 
 Lag det kuleste, sprøeste eller fineste kartet dere får til! 
 
-Når du er fornøyd kan du trykke på "Skriv ut" for å skrive ut ditt spesial-designede kart! Gratulerer! 
-
 ```javascript
 // Her setter vi fargene til kartet
-let bakgrunnsfarge = 'green'
-let veifarge = 'red';
-let bygningsfarge = 'salmon';
-let vannfarge = 'pink';
-let skogfarge = 'red';
-let gressfarge = 'orange'
-let jernbanefarge = 'black'
-let boligfarge = 'black';
+let bakgrunnsfarge = "green";
+let veifarge = "red";
+let bygningsfarge = "plum";
+let vannfarge = "orange";
+let skogfarge = "red";
+let gressfarge = "orange";
+let jernbanefarge = "black";
+let jernbanetykkelse = 3.0;
+let boligfarge = "black";
 ```
 
 -----
@@ -84,12 +87,8 @@ let boligfarge = 'black';
 # Lag et 3D-kart!
 Til nå har vi bare sett kartet rett ovenfra i 2D. Kartdata er ofte 3D-data. Nå skal vi se kartet i perspektiv og sette 3D-høyder på datalagene.
 
-## Oppgave1: Vis kartet i 3D
-Gå inn på [CodePen 3D](https://codepen.io/girltechnorkart/pen/EaPpBVZ?editors=1000). 
-
-(Hvis du vil kan du kopiere senterpunkt og fargene dine fra den forrige oppgaven!)
-
-Nå skal du først aktivere 3D-modusen. Det gjør du ved å endre variabelen 'perspektiv' til 'true'. 
+## Oppgave 3: Vis kartet i 3D
+Du fortsetter i den samme CodePen-en. Nå skal du først aktivere 3D-modusen. Det gjør du ved å endre variabelen 'perspektiv' til 'true'. 
 
 ```javascript
 //denne må du sette til 'true' for å aktivere 3D i kartet
@@ -100,16 +99,15 @@ Nå kan du rotere og "vri" på kartet ved å trykke "ctrl" og museklikk i kartet
 
 ![alt text](image-1.png)
 
-
-## Oppgave2: Legg til 3D-visning av datalag
-Nå skal vi få bygningene til å bli i 3D. Da må du sette en _skaleringsfaktor_ til høyden på bygningene. Dette gjør du ved å endre tallet til _bygning_skalering_. Prøv deg frem og se forskjellene! Hvorfor går det ikke med negative tall?
+### Gjør husene høye
+Nå skal vi få bygningene til å bli i 3D. Da må du sette en _skaleringsfaktor_ til høyden på bygningene. Dette gjør du ved å endre tallet til _bygning_skalering_. 1 er ekte høyde. Prøv deg frem og se forskjellene! Hvorfor går det ikke med negative tall?
 
 ```javascript
 //denne bestemmer skalering av høyden til bygninger i 3D
 let bygning_skalering = 0;
 ```
 
-## Oppgave3: La vannet bli høyere
+### La vannet bli høyere
 Kartet trenger ikke bare vise det som er realistisk. Vi kan også legge til 3D-effekt på andre datalag. Nå skal vi legge til 3D-effekt på vannet(!). Da kan vi sette en fast høyde på vannet og se hva som skjer. Prøv deg frem med forskjellig høyder! Hva kan du bruke dette til? 
 
 ```javascript
@@ -117,7 +115,57 @@ Kartet trenger ikke bare vise det som er realistisk. Vi kan også legge til 3D-e
 let vannheight = 0;
 ```
 
-Når du er fornøyd kan du trykke på "Skriv ut" for å printe kartet ditt! 
+### Lag en 3D-skog
+Skogen kan også bli i 3D. Hvor høy vil du ha den?
+
+```javascript
+//denne bestemmer høyden til skogen i 3D
+let skoghoyde = 0;
+```
+
+### Bygg ditt eget tårn
+Tårnet står på stedet du har valgt øverst i kartet. Prøv 828: like høyt som verdens høyeste bygning!
+
+```javascript
+//Bygg ditt eget tårn på valgt sted (høyde i meter, 0 = ikke noe tårn)
+let taarnhoyde = 0;
+let taarnfarge = "hotpink";
+```
+
+Når du er fornøyd: ta kontakt med en fra Norkart, så hjelper vi deg med å printe ut kartet ditt! 
+
+-----
+-----
+
+
+# Ekstraoppdrag
+Ferdig med oppgavene? Velg et ekstraoppdrag! Slå på bare ett ekstraoppdrag om gangen.
+
+## Veistil: stiplete og prikkete veier
+Gjør veiene stiplete eller prikkete! Tallene betyr [tegn, hopp]: hvor langt "tusjen" tegner, og hvor langt den hopper over, målt i veibredder. [2, 2] er stiplet, [0, 2] er prikker og [4, 2, 0, 2] er strek-prikk.
+
+```javascript
+// Her setter vi linjestilen til veiene
+let nyveistil = true;
+
+//se eget dokument hva [2,2] betyr
+let veistil = [2, 2];
+
+//fargen i hullene mellom strekene
+//"transparent" = usynlig, da ser du kartet under
+let veikantBakgrunnsfarge = "transparent";
+```
+
+## Skattejakten
+Det er gjemt en skatt i Kristiansand! Klikk i kartet, så sier popupen om det er kaldt, lunkent eller varmt, og hvor mange meter skatten er unna. Du kan også endre det popupen sier.
+
+```javascript
+// Det er gjemt en skatt i kartet! Klikk i kartet for å lete etter den.
+let skattejakt = true;
+
+// hvor nær skatten du må klikke (i meter). Mindre tall = vanskeligere!
+let skattestorrelse = 50;
+```
 
 
 --------
@@ -165,7 +213,7 @@ Etter at vektortiles er lastet inn, kan du bruke CSS-lignende språk for å styl
 
 ## 4. Bruke Kartbiblioteker
 
-Det finnes mange biblioteker, som **Mapbox** eller **Leaflet**, som gjør det lettere å jobbe med vektortiles og styling. Disse bibliotekene gir ferdige verktøy for å laste inn vektortiles, håndtere interaktivitet, og style kartet.
+Det finnes mange biblioteker, som **MapLibre**, **Mapbox** eller **Leaflet**, som gjør det lettere å jobbe med vektortiles og styling. Disse bibliotekene gir ferdige verktøy for å laste inn vektortiles, håndtere interaktivitet, og style kartet. Kartet ditt bruker **MapLibre**, et gratis kartbibliotek med åpen kildekode, med kartdata fra OpenStreetMap levert av MapTiler.
 
 ## Oppsummering
 
